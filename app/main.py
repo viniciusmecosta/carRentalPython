@@ -3,7 +3,7 @@ import sqlite3
 from db.db_manager import DBManager
 
 
-dbmanager = DBManager("banco.db")
+dbmanager = DBManager("app/db/banco.db")
 
 
 def logar():
@@ -957,36 +957,36 @@ def devhrv():
 
 app = QtWidgets.QApplication([])
 #CRIAR TELAS
-pt1 = uic.loadUi("tela/pt1(login).ui")
-pt2 = uic.loadUi("tela/pt2(inicial).ui")
-pt3 = uic.loadUi("tela/pt3(carros).ui")
-pt4 = uic.loadUi("tela/pt4(kwid).ui")
-pt41 = uic.loadUi("tela/pt4-1(kwid).ui")
-pt42 = uic.loadUi("tela/pt4-2(kwid).ui")
-pt5 = uic.loadUi("tela/pt5(mobi).ui")
-pt51 = uic.loadUi("tela/pt5-1(mobi).ui")
-pt52 = uic.loadUi("tela/pt5-2(mobi).ui")
-pt6 = uic.loadUi("tela/pt6(argo).ui")
-pt61 = uic.loadUi("tela/pt6-1(argo).ui")
-pt62 = uic.loadUi("tela/pt6-2(argo).ui")
-pt7 = uic.loadUi("tela/pt7(gol).ui")
-pt71 = uic.loadUi("tela/pt7-1(gol).ui")
-pt72 = uic.loadUi("tela/pt7-2(gol).ui")
-pt8 = uic.loadUi("tela/pt8(compass).ui")
-pt81 = uic.loadUi("tela/pt8-1(compass).ui")
-pt82 = uic.loadUi("tela/pt8-2(compass).ui")
-pt9 = uic.loadUi("tela/pt9(hrv).ui")
-pt91 = uic.loadUi("tela/pt9-1(hrv).ui")
-pt92 = uic.loadUi("tela/pt9-2(hrv).ui")
-pt10 = uic.loadUi("tela/pt10(clientes).ui")
-pt101 = uic.loadUi("tela/pt10-1(clientes).ui")
-pt11 = uic.loadUi("tela/pt11(func).ui")
-pt12 = uic.loadUi("tela/pt12(clientes_cadastro).ui")
-pt13 = uic.loadUi("tela/pt13(func_cadastro).ui")
-pt14 = uic.loadUi("tela/pt14(func_editar).ui")
-pt15 = uic.loadUi("tela/pt15(clientes_editar).ui")
-pt16 = uic.loadUi("tela/pt16(info_car).ui")
-pt17 = uic.loadUi("tela/pt17(tabela).ui")
+pt1 = uic.loadUi("app/screens/pt1(login).ui")
+pt2 = uic.loadUi("app/screens/pt2(inicial).ui")
+pt3 = uic.loadUi("app/screens/pt3(carros).ui")
+pt4 = uic.loadUi("app/screens/pt4(kwid).ui")
+pt41 = uic.loadUi("app/screens/pt4-1(kwid).ui")
+pt42 = uic.loadUi("app/screens/pt4-2(kwid).ui")
+pt5 = uic.loadUi("app/screens/pt5(mobi).ui")
+pt51 = uic.loadUi("app/screens/pt5-1(mobi).ui")
+pt52 = uic.loadUi("app/screens/pt5-2(mobi).ui")
+pt6 = uic.loadUi("app/screens/pt6(argo).ui")
+pt61 = uic.loadUi("app/screens/pt6-1(argo).ui")
+pt62 = uic.loadUi("app/screens/pt6-2(argo).ui")
+pt7 = uic.loadUi("app/screens/pt7(gol).ui")
+pt71 = uic.loadUi("app/screens/pt7-1(gol).ui")
+pt72 = uic.loadUi("app/screens/pt7-2(gol).ui")
+pt8 = uic.loadUi("app/screens/pt8(compass).ui")
+pt81 = uic.loadUi("app/screens/pt8-1(compass).ui")
+pt82 = uic.loadUi("app/screens/pt8-2(compass).ui")
+pt9 = uic.loadUi("app/screens/pt9(hrv).ui")
+pt91 = uic.loadUi("app/screens/pt9-1(hrv).ui")
+pt92 = uic.loadUi("app/screens/pt9-2(hrv).ui")
+pt10 = uic.loadUi("app/screens/pt10(clientes).ui")
+pt101 = uic.loadUi("app/screens/pt10-1(clientes).ui")
+pt11 = uic.loadUi("app/screens/pt11(func).ui")
+pt12 = uic.loadUi("app/screens/pt12(clientes_cadastro).ui")
+pt13 = uic.loadUi("app/screens/pt13(func_cadastro).ui")
+pt14 = uic.loadUi("app/screens/pt14(func_editar).ui")
+pt15 = uic.loadUi("app/screens/pt15(clientes_editar).ui")
+pt16 = uic.loadUi("app/screens/pt16(info_car).ui")
+pt17 = uic.loadUi("app/screens/pt17(tabela).ui")
 
 
 #BOTAO LOGIN
@@ -1088,6 +1088,11 @@ pt15.voltar_10.clicked.connect(logout15)
 pt16.voltar_10.clicked.connect(logout16)
 pt17.voltar_10.clicked.connect(logout17)
 
-banco = sqlite3.connect("banco.db")
+try:
+    banco = sqlite3.connect("app/db/banco.db")
+    print("Banco de dados conectado com sucesso!")
+except Exception as e:
+    print(f"Erro ao conectar ao banco de dados: {e}")
+
 pt1.show()
 app.exec()

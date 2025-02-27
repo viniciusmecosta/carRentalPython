@@ -47,13 +47,19 @@ def insert_initial_data():
 
     carros = ['Kwid', 'Mobi', 'Argo', 'Gol', 'Compass', 'Hrv']
     for carro in carros:
-        cursor.execute(f'''
-            INSERT INTO carros (nome_carro)
-            VALUES ('{carro}')
-        ''')
+        cursor.execute('''
+            INSERT INTO carros (nome_carro) 
+            VALUES (?)
+        ''', (carro,))
+
+    cursor.execute('''
+        INSERT INTO funcionarios (nome_funcio, login_funcio, cargo_funcio, senha_funcio) 
+        VALUES (?, ?, ?, ?)
+    ''', ('Admin', 'admin', 'Administrador', 'admin'))
 
     banco.commit()
     banco.close()
 
 if __name__ == "__main__":
+    create_tables()
     insert_initial_data()
